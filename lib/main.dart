@@ -1,6 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:proj_curso_2/screens/meal_detail_screen.dart';
 import 'screens/categories_screen.dart';
 import 'screens/categories_meals_screen.dart';
 import 'utils/app_routes.dart';
@@ -27,7 +26,25 @@ class MyApp extends StatelessWidget {
               .copyWith(secondary: Colors.amber)),
       routes: {
         AppRoutes.HOME: (context) => const CategoriesScreen(),
-        AppRoutes.CATEGORIES_MEALS: ((context) => const CategorielMealsScreen())
+        AppRoutes.CATEGORIES_MEALS: ((context) =>
+            const CategorielMealsScreen()),
+        AppRoutes.MEAL_DETAIL: ((context) => const MealDetailScreen())
+      },
+      // onGenerateRoute: (settings) {
+      //   if (settings.name == '/alguma-coisa') {
+      //     return null;
+      //   } else if (settings.name == '/outra-coisa') {
+      //     return null;
+      //   } else {
+      //     return MaterialPageRoute(builder: (_) {
+      //       return const CategoriesScreen();
+      //     });
+      //   }
+      // },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (_) {
+          return const CategoriesScreen();
+        });
       },
     );
   }
